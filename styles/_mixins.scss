@@ -1,0 +1,38 @@
+@mixin app {
+  margin-top: 1rem;
+  width: 400px;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  align-items: center;
+  position: relative;
+  background-color: darkgray;
+  border: transparent;
+  border-radius: 5px;
+  overflow-x: hidden;
+}
+
+@mixin header {
+  background-color: lightblue;
+  margin-top: 0;
+  width: 92%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+  padding: 1rem;
+}
+
+@mixin footer {
+  background-color: lightblue;
+  position: absolute;
+  bottom: 0;
+  width: 92%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0 1rem;
+}

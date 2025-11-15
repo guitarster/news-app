@@ -1,9 +1,6 @@
-import "./style.css";
+import "/styles/style.scss";
+import { startscreen } from "./startscreen";
 
-document.querySelector("#app").innerHTML = `
-  <div>
-Hello
-  </div>
-`;
+const app = document.getElementById("app");
 
-setupCounter(document.querySelector("#counter"));
+startscreen(app);
