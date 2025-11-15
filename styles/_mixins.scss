@@ -6,7 +6,7 @@
   overflow: auto;
   align-items: center;
   position: relative;
-  background-color: darkgray;
+  background-color: lightgray;
   border: transparent;
   border-radius: 5px;
   overflow-x: hidden;
@@ -15,7 +15,7 @@
 @mixin header {
   background-color: lightblue;
   margin-top: 0;
-  width: 92%;
+  width: 100%;
   height: 70px;
   display: flex;
   justify-content: center;
@@ -28,10 +28,9 @@
   background-color: lightblue;
   position: absolute;
   bottom: 0;
-  width: 92%;
+  width: 100%;
   height: 50px;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  margin: 0 1rem;
 }
