@@ -37,12 +37,13 @@ body {
 }
 
 .categories {
-  width: 95%;
+  width: 100%;
   display: flex;
   gap: 1rem;
   padding: 1rem;
   overflow-x: scroll;
   scrollbar-width: none;
+  box-sizing: border-box;
 
   &__child {
     border: 1px solid lightblue;
@@ -55,6 +56,18 @@ body {
     align-items: center;
     padding: 0 1rem;
   }
+}
+
+.menu {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  gap: 7rem;
+  background-color: lightblue;
+  width: 100%;
 }
 
 .footer {
