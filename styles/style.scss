@@ -39,10 +39,10 @@ body {
 .categories {
   width: 95%;
   display: flex;
-  overflow: auto;
   gap: 1rem;
   padding: 1rem;
-  overflow: hidden;
+  overflow-x: scroll;
+  scrollbar-width: none;
 
   &__child {
     border: 1px solid lightblue;
