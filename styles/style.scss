@@ -23,6 +23,7 @@ body {
 
   &__title {
     font-size: 1.8rem;
+    color: #f1f1f2;
   }
 
   &__search-button {
@@ -46,9 +47,10 @@ body {
   box-sizing: border-box;
 
   &__child {
-    border: 1px solid lightblue;
+    border: 1px solid #1995ad;
     border-radius: 25px;
-    background-color: lightblue;
+    background-color: #1995ad;
+    color: #f1f1f2;
     font-size: 1.1rem;
     height: 40px;
     width: 100%;
@@ -64,12 +66,8 @@ body {
   bottom: 0;
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   gap: 7rem;
-  background-color: lightblue;
+  background-color: #1995ad;
   width: 100%;
-}
-
-.footer {
-  @include footer;
 }
