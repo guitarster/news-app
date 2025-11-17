@@ -1,11 +1,12 @@
 @mixin app {
+  position: relative;
   width: 400px;
   height: 900px;
   display: flex;
   flex-direction: column;
   overflow: auto;
   align-items: center;
-  background-color: #f1f1f2;
+  background-color: #1995ad;
   border: transparent;
   border-radius: 10px;
   overflow-x: hidden;
