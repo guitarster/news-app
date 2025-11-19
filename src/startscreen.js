@@ -47,6 +47,9 @@ export async function renderStartscreen() {
     loadNews("https://rss.app/feeds/v1.1/tv9nw7FZOVEFCRqy.json")
   );
 
+  const bookmarkCategoryEl = document.getElementById("bookmarks");
+  bookmarkCategoryEl.addEventListener("click", () => loadBookmarks());
+
   const bookmarkEl = document.getElementsByClassName(
     "card__date-bookmark__bookmark"
   );
@@ -55,8 +58,37 @@ export async function renderStartscreen() {
   }
 }
 
+function loadBookmarks() {
+  let bookmarksFromStorage = JSON.parse(localStorage.getItem("bookmarks"));
+  const newsEl = document.querySelector(".news");
+
+  if (!bookmarksFromStorage) {
+    newsEl.innerHTML = `<div>Noch keine Lesezeichen hinzugefügt.</div>`;
+    console.log("IF");
+  } else {
+    newsEl.innerHTML = `<div>${bookmarksFromStorage}</div>`;
+    console.log("Else");
+  }
+}
+
 function saveBookmark(element) {
-  element.innerHTML = `
+  let bookmarksFromStorage = JSON.parse(localStorage.getItem("bookmarks"));
+  const dataId = element.parentElement.parentElement.getAttribute("data-id");
+
+  if (!bookmarksFromStorage) {
+    bookmarksFromStorage = [];
+  }
+
+  const index = bookmarksFromStorage.indexOf(dataId);
+
+  if (index !== -1) {
+    bookmarksFromStorage.splice(index, 1);
+    element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256">
+                    <g fill="#1da9af" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M6.00977,2c-1.09545,0 -2,0.9026 -2,1.99805l-0.00977,18.00195l8,-3l8,3v-1.44336v-16.55664c0,-1.09306 -0.90694,-2 -2,-2zM6.00977,4h11.99023v15.11328l-6,-2.25l-5.99805,2.25z"></path></g></g>
+                    </svg>`;
+  } else {
+    bookmarksFromStorage.push(dataId);
+    element.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
             <g fill="#1da9af">
                 <g transform="scale(10.66667,10.66667)">
@@ -64,8 +96,10 @@ function saveBookmark(element) {
                 <path d="M4,22v-18c0,-1.1 0.9,-2 2,-2h12c1.1,0 2,0.9 2,2v18l-8,-3zM12,16.9l6,2.3v-15.2h-12v15.1z"></path>
                 </g>
             </g>
-        </svg>
-`;
+        </svg>`;
+  }
+
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarksFromStorage));
 }
 
 function renderApp() {
@@ -87,7 +121,7 @@ function renderHeader(appStart) {
 function renderCategories(appStart) {
   appStart.innerHTML += `
     <div class="categories">
-        <div class="categories__child"><svg fill="#f1f1f2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
+        <div class="categories__child" id="bookmarks"><svg fill="#f1f1f2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 24 24">
             <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z"></path>
             </svg>
         </div>
