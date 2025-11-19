@@ -110,10 +110,9 @@ function renderCard(news, loadedNews) {
                 <div class="card__text">${loadedNews.content_text}</div>
             </div>
         </a>
-            <div class="card__date-bookmark">
-                <div class="card__date-bookmark__date">Vor ${Math.round(
-                  (durationSincePublishing / (1000 * 60 * 60)) % 24
-                )} h veröffentlicht</div>
+            <div class="card__date">Vor ${Math.round(
+              (durationSincePublishing / (1000 * 60 * 60)) % 24
+            )} h veröffentlicht
             </div>
     </div>`;
 }

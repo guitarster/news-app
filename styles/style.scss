@@ -120,17 +120,8 @@ body {
     overflow: hidden;
   }
 
-  &__date-bookmark {
-    display: flex;
-    justify-content: space-between;
-
-    &__date {
-      font-size: 0.8rem;
-    }
-
-    &__bookmark {
-      cursor: pointer;
-    }
+  &__date {
+    font-size: 0.8rem;
   }
 }
 
