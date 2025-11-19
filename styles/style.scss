@@ -129,7 +129,7 @@ body {
 
   &__active {
     display: unset;
-    position: fixed;
+    position: absolute;
     top: 630px;
     width: 384px;
     padding: 1rem;
