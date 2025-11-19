@@ -75,6 +75,7 @@ body {
 
 .news {
   box-sizing: border-box;
+  margin-top: 1rem;
 }
 
 .card {
@@ -130,5 +131,21 @@ body {
     &__bookmark {
       cursor: pointer;
     }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .app-start {
+    width: 700px;
+  }
+
+  .news {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .header {
+    padding: 3rem 0 2rem 0;
   }
 }
