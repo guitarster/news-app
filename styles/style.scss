@@ -5,6 +5,12 @@
   padding: 0;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
 body {
   font-family: Arial, sans-serif;
   display: flex;
