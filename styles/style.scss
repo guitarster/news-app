@@ -86,14 +86,16 @@ body {
   }
 
   &__title {
-    font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   &__text {
+    font-size: 0.8rem;
     margin-bottom: 0.5rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -105,12 +107,16 @@ body {
   &__date-bookmark {
     display: flex;
     justify-content: space-between;
+
+    &__date {
+      font-size: 0.8rem;
+    }
   }
 }
 
 .menu {
   box-sizing: border-box;
-  position: absolute;
+  position: sticky;
   bottom: 0;
   display: flex;
   justify-content: center;

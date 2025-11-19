@@ -1,4 +1,4 @@
 import "/styles/style.scss";
-import { loadStartscreen } from "./startscreen";
+import { renderStartscreen } from "./startscreen";
 
-loadStartscreen();
+renderStartscreen();
