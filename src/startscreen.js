@@ -1,10 +1,11 @@
 import { getTopNews } from "./API";
-import { activatePanel } from "./menu";
 
 const app = document.getElementById("app");
 
 async function loadNews() {
-  const news = await getTopNews();
+  const news = await getTopNews(
+    "https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json"
+  );
   const topNews = news.items;
 
   return topNews;
@@ -21,9 +22,6 @@ export async function renderStartscreen() {
   for (let element of loadedNewsAll) {
     renderCard(news, element);
   }
-  renderMenu(appStart);
-  renderInfoPanel(appStart);
-  activatePanel();
 }
 
 function renderApp() {
@@ -39,10 +37,6 @@ function renderHeader(appStart) {
             </svg>
         </div>
         <div class="header__title">Newsly</div>
-        <div class="menu__info"><svg fill="#f1f1f2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
-            <path d="M 25 2 C 12.309295 2 2 12.309295 2 25 C 2 37.690705 12.309295 48 25 48 C 37.690705 48 48 37.690705 48 25 C 48 12.309295 37.690705 2 25 2 z M 25 4 C 36.609824 4 46 13.390176 46 25 C 46 36.609824 36.609824 46 25 46 C 13.390176 46 4 36.609824 4 25 C 4 13.390176 13.390176 4 25 4 z M 25 11 A 3 3 0 0 0 22 14 A 3 3 0 0 0 25 17 A 3 3 0 0 0 28 14 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 22 23 L 23 23 L 23 36 L 22 36 L 21 36 L 21 38 L 22 38 L 23 38 L 27 38 L 28 38 L 29 38 L 29 36 L 28 36 L 27 36 L 27 21 L 26 21 L 22 21 L 21 21 z"></path>
-            </svg>
-        </div>
     </div>`;
 }
 
@@ -53,8 +47,8 @@ function renderCategories(appStart) {
             <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z"></path>
             </svg>
         </div>
-        <div class="categories__child">Schlagzeilen</div>
-        <div class="categories__child">Politik</div>
+        <div class="categories__child" id="schlagzeilen">Schlagzeilen</div>
+        <div class="categories__child" id="politik">Politik</div>
         <div class="categories__child">Wirtschaft</div>
         <div class="categories__child">Lokales</div>
         <div class="categories__child">Unterhaltung</div>
@@ -74,7 +68,7 @@ function renderCard(news, loadedNews) {
 
   news.innerHTML += `
     <div class="card">
-        <a href="${loadedNews.url}">
+        <a href="${loadedNews.url}" target="blank">
             <div class="card__wrapper-for-link">
                 <div class="card__image"><img width="320" src="${
                   loadedNews.image
@@ -93,25 +87,5 @@ function renderCard(news, loadedNews) {
                     </svg>
                 </div>
             </div>
-    </div>`;
-}
-
-function renderMenu(appStart) {
-  appStart.innerHTML += `
-    `;
-}
-
-function renderInfoPanel(appStart) {
-  appStart.innerHTML += `
-    <div id="infoPanel" class="panel">
-        <h2>Impressum</h2>
-        <p>David-Benjamin Rohrer<br>
-        Musterstraße 1<br>
-        12345 Musterstadt<br>
-        <br>
-        Telefon: 01234 / 5678900<br>
-        E-Mail: mustername@email.com            
-        </p><br>
-        <button id="closeInfo">Schließen</button>
     </div>`;
 }
