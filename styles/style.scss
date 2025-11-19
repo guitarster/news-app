@@ -38,11 +38,11 @@ body {
   &__title {
     font-size: 1.8rem;
     color: #f1f1f2;
+    cursor: pointer;
   }
 
-  &__search-button {
-    display: flex;
-    align-items: baseline;
+  &__menu {
+    cursor: pointer;
   }
 }
 
@@ -139,13 +139,17 @@ body {
     width: 700px;
   }
 
+  .header {
+    padding: 3rem 0 2rem 0.5rem;
+  }
+
   .news {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
 
-  .header {
-    padding: 3rem 0 2rem 0;
+  .card {
+    width: 315px;
   }
 }

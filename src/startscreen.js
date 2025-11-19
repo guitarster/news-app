@@ -22,6 +22,11 @@ export async function renderStartscreen() {
   renderNews(appStart);
   await loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json");
 
+  const headerTitleEl = document.querySelector(".header__title");
+  headerTitleEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json")
+  );
+
   const menuEl = document.querySelector(".header__menu");
   const categoriesEl = document.querySelector(".categories");
 
