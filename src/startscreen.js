@@ -2,13 +2,16 @@ import { getTopNews } from "./API";
 
 const app = document.getElementById("app");
 
-async function loadNews() {
-  const news = await getTopNews(
-    "https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json"
-  );
+async function loadNews(url) {
+  const news = await getTopNews(url);
   const topNews = news.items;
 
-  return topNews;
+  const newsEl = document.querySelector(".news");
+  newsEl.innerHTML = "";
+
+  for (let element of topNews) {
+    renderCard(newsEl, element);
+  }
 }
 
 export async function renderStartscreen() {
@@ -17,11 +20,32 @@ export async function renderStartscreen() {
   renderHeader(appStart);
   renderCategories(appStart);
   renderNews(appStart);
-  const news = document.querySelector(".news");
-  const loadedNewsAll = await loadNews();
-  for (let element of loadedNewsAll) {
-    renderCard(news, element);
-  }
+  loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json");
+
+  const schlagzeilenEl = document.getElementById("schlagzeilen");
+  schlagzeilenEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json")
+  );
+
+  const politikEl = document.getElementById("politik");
+  politikEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/HnoRe3cN6mPMSxwx.json")
+  );
+
+  const wirtschaftEl = document.getElementById("wirtschaft");
+  wirtschaftEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/XbvbFcmJ0guXftbu.json")
+  );
+
+  const unterhaltungEl = document.getElementById("unterhaltung");
+  unterhaltungEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/gOIOUp0WdpTbP7Mr.json")
+  );
+
+  const sportEl = document.getElementById("sport");
+  sportEl.addEventListener("click", () =>
+    loadNews("https://rss.app/feeds/v1.1/tv9nw7FZOVEFCRqy.json")
+  );
 }
 
 function renderApp() {
@@ -49,10 +73,9 @@ function renderCategories(appStart) {
         </div>
         <div class="categories__child" id="schlagzeilen">Schlagzeilen</div>
         <div class="categories__child" id="politik">Politik</div>
-        <div class="categories__child">Wirtschaft</div>
-        <div class="categories__child">Lokales</div>
-        <div class="categories__child">Unterhaltung</div>
-        <div class="categories__child">Sport</div>
+        <div class="categories__child" id="wirtschaft">Wirtschaft</div>
+        <div class="categories__child" id="unterhaltung">Unterhaltung</div>
+        <div class="categories__child" id="sport">Sport</div>
     </div>`;
 }
 
