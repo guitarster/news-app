@@ -2,7 +2,7 @@
 // const API_KEY = "c010ad7b97c2e9b11d64507305952d9e";
 
 export async function getTopNews() {
-  const url = `https://rss.app/feeds/v1.1/U2WpdOS1phKEsUlP.json`;
+  const url = `https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json`;
 
   const response = await fetch(url);
 
