@@ -1,6 +1,4 @@
 import "/styles/style.scss";
-import { startscreen } from "./startscreen";
+import { loadStartscreen } from "./startscreen";
 
-const app = document.getElementById("app");
-
-startscreen(app);
+loadStartscreen();
