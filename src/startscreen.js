@@ -22,6 +22,13 @@ export async function renderStartscreen() {
   renderNews(appStart);
   await loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json");
 
+  const menuEl = document.querySelector(".header__menu");
+  const categoriesEl = document.querySelector(".categories");
+
+  menuEl.addEventListener("click", () => {
+    categoriesEl.classList.toggle("categories-display");
+  });
+
   const schlagzeilenEl = document.getElementById("schlagzeilen");
   schlagzeilenEl.addEventListener("click", () =>
     loadNews("https://rss.app/feeds/v1.1/8pn1E3Yx2PUufYkS.json")
@@ -57,6 +64,11 @@ function renderHeader(appStart) {
   appStart.innerHTML += `
     <div class="header">
         <div class="header__title">Newsly</div>
+        <div class="header__menu">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#f1f1f2" x="0px" y="0px" width="30" height="30" viewBox="0 0 50 50">
+                <path d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"></path>
+            </svg>
+        </div>
     </div>`;
 }
 
