@@ -5,7 +5,7 @@ const app = document.getElementById("app");
 
 async function loadNews() {
   const news = await getTopNews();
-  const topNews = news.articles;
+  const topNews = news.items;
 
   return topNews;
 }
@@ -64,7 +64,7 @@ function renderNews(appStart) {
 }
 
 function renderCard(news, loadedNews) {
-  const dateStamp = new Date(loadedNews.publishedAt);
+  const dateStamp = new Date(loadedNews.date_published);
   const dateStampParsed = Date.parse(dateStamp);
   const currentTime = Date.now();
   const durationSincePublishing = currentTime - dateStampParsed;
@@ -72,12 +72,15 @@ function renderCard(news, loadedNews) {
   news.innerHTML += `
     <div class="card">
         <a href="${loadedNews.url}">
-            <div class="card__image"><img width="320" src="${
-              loadedNews.image
-            }" alt="crashed-car"/></div>
-            <div class="card__source">${loadedNews.source.name}</div>
-            <div class="card__title">${loadedNews.title}</div>
-            <div class="card__text">${loadedNews.description}</div>
+            <div class="card__wrapper-for-link">
+                <div class="card__image"><img width="320" src="${
+                  loadedNews.image
+                }"/></div>
+                <div class="card__source">${loadedNews.authors[0].name}</div>
+                <div class="card__title">${loadedNews.title}</div>
+                <div class="card__text">${loadedNews.content_text}</div>
+            </div>
+        </a>
             <div class="card__date-bookmark">
                 <div class="card__date-bookmark__date">Vor ${Math.round(
                   (durationSincePublishing / (1000 * 60 * 60)) % 24
@@ -87,7 +90,6 @@ function renderCard(news, loadedNews) {
                     </svg>
                 </div>
             </div>
-        </a>
     </div>`;
 }
 
