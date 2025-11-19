@@ -1,5 +1,3 @@
-@use "mixins" as *;
-
 * {
   margin: 0;
   padding: 0;
@@ -14,22 +12,28 @@ a:visited {
 body {
   font-family: Arial, sans-serif;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: white;
-  border-radius: 5px;
+  background-color: #000000;
 }
 
 .app-start {
-  @include app;
-}
-
-.app-info {
-  @include app;
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 .header {
-  @include header;
+  margin-top: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 3rem 1rem 2rem 2rem;
+  box-sizing: border-box;
 
   &__title {
     font-size: 1.8rem;
@@ -45,6 +49,8 @@ body {
 .categories {
   width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: left;
   gap: 1rem;
   margin: 1rem;
   padding: 1rem;
@@ -52,8 +58,6 @@ body {
   overflow-y: hidden;
   scrollbar-width: none;
   box-sizing: border-box;
-  align-items: center;
-  justify-content: left;
 
   &__child {
     justify-content: center;
@@ -70,7 +74,6 @@ body {
 
 .news {
   box-sizing: border-box;
-  color: #f1f1f2;
 }
 
 .card {
@@ -127,44 +130,4 @@ body {
       cursor: pointer;
     }
   }
-}
-
-.menu {
-  box-sizing: border-box;
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  gap: 7rem;
-  background-color: #1995ad;
-  width: 100%;
-
-  &__info {
-    cursor: pointer;
-  }
-}
-
-.panel {
-  display: none;
-
-  &__active {
-    color: #f1f1f2;
-    display: unset;
-    position: absolute;
-    z-index: 10;
-    height: 100vh;
-    width: 384px;
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: #1995ad;
-  }
-}
-
-#closeInfo {
-  border: #1995ad 1px solid;
-  padding: 0.5rem;
-  border-radius: 10px;
-  background-color: #f1f1f2;
-  cursor: pointer;
 }
